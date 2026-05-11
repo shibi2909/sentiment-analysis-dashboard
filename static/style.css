@@ -1,0 +1,176 @@
+body {
+
+    font-family: Arial;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+
+}
+
+.container {
+
+    width: 90%;
+    margin: auto;
+
+}
+
+h1 {
+
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+
+/* Upload Form */
+
+form {
+
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+
+input[type=file] {
+
+    padding: 10px;
+
+}
+
+button {
+
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+button:hover {
+
+    background: #555;
+
+}
+
+/* Summary Cards */
+
+.summary {
+
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+
+}
+
+.card {
+
+    width: 25%;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+.positive {
+
+    background: green;
+
+}
+
+.neutral {
+
+    background: orange;
+
+}
+
+.negative {
+
+    background: red;
+
+}
+
+/* Pie Chart */
+
+.chart-container {
+
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    margin-bottom: 40px;
+
+}
+
+/* Table */
+
+table {
+
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+
+}
+
+th, td {
+
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+
+}
+
+th {
+
+    background: #333;
+    color: white;
+
+}
+
+/* Row Colors */
+
+.row-positive {
+
+    background-color: #d4edda;
+
+}
+
+.row-neutral {
+
+    background-color: #fff3cd;
+
+}
+
+.row-negative {
+
+    background-color: #f8d7da;
+
+}
+
+/* Responsive Design */
+
+@media(max-width:768px){
+
+    .summary {
+
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .card {
+
+        width: 80%;
+        margin-bottom: 10px;
+
+    }
+
+    .chart-container {
+
+        width: 250px;
+        height: 250px;
+
+    }
+
+}
