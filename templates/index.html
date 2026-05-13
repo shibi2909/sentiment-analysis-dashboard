@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Sentiment Analysis Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Sentiment Analysis Dashboard</h1>
+
+    <!-- Upload Form -->
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="file" required>
+
+        <button type="submit">
+            Upload Dataset
+        </button>
+
+    </form>
+
+    <!-- Summary Cards -->
+
+    <div class="summary">
+
+        <div class="card positive">
+            Positive:
+            {{ sentiment_counts.get('Positive',0) }}
+        </div>
+
+        <div class="card neutral">
+            Neutral:
+            {{ sentiment_counts.get('Neutral',0) }}
+        </div>
+
+        <div class="card negative">
+            Negative:
+            {{ sentiment_counts.get('Negative',0) }}
+        </div>
+
+    </div>
+
+    <!-- Pie Chart -->
+
+    <div class="chart-container">
+
+        <canvas id="myChart"></canvas>
+
+    </div>
+
+    <!-- Review Table -->
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Review Text</th>
+                <th>Score</th>
+                <th>Sentiment</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for review in reviews %}
+
+        <tr class="
+            {% if review.Sentiment == 'Positive' %}
+                row-positive
+            {% elif review.Sentiment == 'Neutral' %}
+                row-neutral
+            {% else %}
+                row-negative
+            {% endif %}
+        ">
+
+            <td>{{ review.Text }}</td>
+            <td>{{ review.Score }}</td>
+            <td>{{ review.Sentiment }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+
+    type: 'pie',
+
+    data: {
+
+        labels: ['Positive', 'Neutral', 'Negative'],
+
+        datasets: [{
+
+            data: [
+
+                {{ sentiment_counts.get('Positive',0) }},
+                {{ sentiment_counts.get('Neutral',0) }},
+                {{ sentiment_counts.get('Negative',0) }}
+
+            ],
+
+            backgroundColor: [
+
+                'green',
+                'orange',
+                'red'
+
+            ]
+        }]
+    }
+});
+
+</script>
+
+</body>
+</html>
